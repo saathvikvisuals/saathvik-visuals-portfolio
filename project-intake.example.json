@@ -1,0 +1,10 @@
+[
+  {
+    "name": "Example Commerce Launch",
+    "url": "https://example-commerce.vercel.app",
+    "github": "https://github.com/saathvikvisuals/example-commerce",
+    "image": "/project-screenshots/example-commerce.png",
+    "description": "A premium shopping and booking experience for a service brand.",
+    "tags": ["commerce", "booking", "service", "responsive"]
+  }
+]
