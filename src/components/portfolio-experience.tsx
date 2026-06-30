@@ -23,6 +23,7 @@ import { roomForInterest, type DepthKey } from "@/lib/curation";
 import { type InterestKey, useExperienceStore } from "@/store/experience-store";
 import { CinematicBackground } from "./cinematic-background";
 import { ExperienceProvider } from "./experience-provider";
+import { ProjectMedia } from "./project-media";
 import Link from "next/link";
 import { EntranceExperience } from "./entrance-experience";
 
@@ -931,7 +932,7 @@ function HeroConstellation() {
             animate={{ y: [0, index % 2 ? 18 : -18, 0], rotate: [0, index % 2 ? -2 : 2, 0] }}
             transition={{ duration: 7 + index, repeat: Infinity, ease: "easeInOut" }}
           >
-            <Image src={project.image} alt="" fill sizes="56vw" className="object-cover" loading={index < 2 ? "eager" : "lazy"} />
+            <ProjectMedia slug={project.slug} image={project.image} alt="" sizes="56vw" loading={index < 2 ? "eager" : "lazy"} />
             <div className="absolute inset-0 bg-gradient-to-t from-black/34 to-transparent" />
           </motion.div>
         ))}
@@ -1138,12 +1139,11 @@ function ProjectScene({ project, index }: { project: (typeof projects)[number]; 
         )}
         style={{ y: imageY, scale: imageScale }}
       >
-        <Image
-          src={project.image}
+        <ProjectMedia
+          slug={project.slug}
+          image={project.image}
           alt={`${project.name} interface screenshot`}
-          fill
           sizes="(min-width: 1024px) 62vw, 94vw"
-          className="object-cover"
           priority={index < 2}
         />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-black/18 via-transparent to-white/10" />
@@ -1210,7 +1210,7 @@ function ProjectArchive({ items, depthProfile }: { items: typeof projects; depth
             transition={{ delay: index * 0.05 }}
             whileHover={{ y: -8 }}
           >
-            <Image src={project.image} alt={`${project.name} screenshot`} fill sizes="(min-width: 768px) 18vw, 92vw" className="object-cover transition duration-700 group-hover:scale-110" />
+            <ProjectMedia slug={project.slug} image={project.image} alt={`${project.name} screenshot`} sizes="(min-width: 768px) 18vw, 92vw" className="transition duration-700 group-hover:scale-110" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/86 via-black/22 to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-4">
               <p className="m-0 text-xs font-black uppercase tracking-[0.18em] text-white/58">0{index + 5}</p>
